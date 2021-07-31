@@ -1,6 +1,6 @@
 let ul = document.getElementById("list");
 let li;
-
+// create event for buttons
 let addButton = document.getElementById("add");
 addButton.addEventListener("click", addItem);
 
@@ -10,6 +10,7 @@ removeButton.addEventListener("click", removeItem);
 let removeAllButton = document.getElementById("remove-all");
 removeAllButton.addEventListener("click", removeAllItem);
 
+// get the value from the input text, if valid add new check box else return a message
 function addItem() {
   let input = document.getElementById("input");
   let item = input.value;
@@ -20,9 +21,10 @@ function addItem() {
     textBox.value = textBox.value + "Enter Your todo ";
     setTimeout(function () {
       input.value = "";
-    }, 500);
+    }, 500); // after 500 milisecondes clear the text from checkbox
     return false;
   } else {
+    // create checkbox elemnt and set the values, then append it on top of the other checkbox elements
     li = document.createElement("li");
     let checkBox = document.createElement("input");
     checkBox.type = "checkbox";
@@ -37,9 +39,10 @@ function addItem() {
     setTimeout(() => {
       li.className = "visual";
       input.value = "";
-    }, 3);
+    }, 3); // for smoth felling
   }
 }
+// look for all the checked items and clear them
 function removeItem() {
   li = ul.children;
   for (let index = 0; index < li.length; index++) {
@@ -50,6 +53,7 @@ function removeItem() {
   }
 }
 
+// remove all the check box, no matter if checked or not
 function removeAllItem() {
   li = ul.children;
   for (let index = 0; index < li.length; index++) {
